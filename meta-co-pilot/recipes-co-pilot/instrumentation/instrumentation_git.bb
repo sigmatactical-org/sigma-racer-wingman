@@ -6,15 +6,18 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE-APACHE;md5=d8b08026ec729e41461816aba7fc28c4 \
 "
 
-inherit cargo systemd
+inherit cargo cargo-update-recipe-crates systemd
 
-# Sole UI application — sources from co-pilot/instrumentation (symlink to embedded/instrumentation)
 SRC_URI = " \
-    git://${SIGMA_INSTRUMENTATION_SRC};protocol=file;branch=main;name=instrumentation;nobranch=1 \
+    git://github.com/sigmatactical-org/instrumentation.git;protocol=https;branch=main;name=instrumentation;nobranch=1 \
     file://cluster-ui.service \
     file://co-pilot-ui.env \
 "
-SRCREV = "${AUTOREV}"
+
+# After SRC_URI assignment — crates.inc uses SRC_URI +=
+require ${THISDIR}/instrumentation-crates.inc
+
+SRCREV = "8a97ff37495d3d5cb37b1a39315c7563014d7b13"
 
 S = "${WORKDIR}/git"
 
@@ -34,17 +37,18 @@ DEPENDS += " \
 export SLINT_BACKEND = "femtovg"
 export RUSTFLAGS:append = " --cfg co_pilot_embedded"
 
-CARGO_BUILD_FLAGS = "--release --bin sigma-dash"
+CARGO_BUILD_FLAGS:append = " --bin sigma-dash"
 
 SYSTEMD_SERVICE:${PN} = "cluster-ui.service"
 SYSTEMD_AUTO_ENABLE = "enable"
 
 do_install() {
     install -d ${D}${bindir}
-    install -m 0755 ${CARGO_TARGET_SUBDIR}/release/sigma-dash ${D}${bindir}/sigma-dash
+    install -m 0755 ${B}/target/${CARGO_TARGET_SUBDIR}/sigma-dash ${D}${bindir}/sigma-dash
 
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${UNPACKDIR}/cluster-ui.service ${D}${systemd_system_unitdir}/cluster-ui.service
+    install -d ${D}${sysconfdir}/co-pilot
     install -m 0644 ${UNPACKDIR}/co-pilot-ui.env ${D}${sysconfdir}/co-pilot/ui.env
 }
 
