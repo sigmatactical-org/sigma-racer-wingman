@@ -33,10 +33,7 @@ RDEPENDS:${PN}-graphics = " \
     weston-init \
     co-pilot-services \
     instrumentation \
-    fontconfig \
     liberation-fonts \
-    harfbuzz \
-    freetype \
 "
 
 RDEPENDS:${PN}-vehicle = " \
