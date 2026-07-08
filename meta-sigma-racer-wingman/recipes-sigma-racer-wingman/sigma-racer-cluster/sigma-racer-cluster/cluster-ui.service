@@ -1,9 +1,9 @@
 [Unit]
 Description=Sigma Racer Wingman instrument cluster UI
 Documentation=file:/usr/share/doc/sigma-racer-cluster/README
-After=weston.service vehicle.service
+After=weston.service sigma-racer-vehicle.service
 Requires=weston.service
-Wants=vehicle.service
+Wants=sigma-racer-vehicle.service
 PartOf=sigma-racer-wingman-ui.target
 Conflicts=getty@tty7.service
 

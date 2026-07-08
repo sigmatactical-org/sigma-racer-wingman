@@ -120,7 +120,7 @@ This document is the authoritative requirements specification for the Sigma Sigm
 - The system SHALL use modular systemd services.
 - The system SHALL isolate major subsystems into separate services:
   - cluster-ui.service
-  - vehicle.service
+  - sigma-racer-vehicle
   - navigation.service
   - gps.service
   - bluetooth.service

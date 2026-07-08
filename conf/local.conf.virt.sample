@@ -5,9 +5,10 @@
 MACHINE ??= "sigma-racer-wingman-qemu"
 DISTRO ??= "sigma-racer-wingman"
 
-# Source sibling Rust repos (default: sigma-racer-wingman/sigma-instrumentation and sigma-racer-cluster symlinks)
+# Source sibling Rust repos (default: symlinks under sigma-racer-wingman/)
 SIGMA_INSTRUMENTATION_SRC ??= "${TOPDIR}/../../sigma-instrumentation"
 SIGMA_RACER_CLUSTER_SRC ??= "${TOPDIR}/../../sigma-racer-cluster"
+SIGMA_RACER_VEHICLE_SRC ??= "${TOPDIR}/../../sigma-racer-vehicle"
 
 #
 # Package format (also set in conf/distro/sigma-racer-wingman.conf)

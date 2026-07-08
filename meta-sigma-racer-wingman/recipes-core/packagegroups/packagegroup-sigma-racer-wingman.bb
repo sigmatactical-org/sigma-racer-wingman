@@ -41,7 +41,7 @@ RDEPENDS:${PN}-vehicle = " \
     can-utils \
     can-network \
     iproute2 \
-    vehicle-service \
+    sigma-racer-vehicle \
 "
 
 RDEPENDS:${PN}-navigation = " \

@@ -3,7 +3,7 @@
 # Canonical DBC: schemas/can/m7-draft.dbc (used by sigma-racer-wingman-telemetry via dbc-rs).
 # YAML mirror below for VSS mapping docs; keep in sync with the DBC.
 #
-# vehicle.service decodes these frames and publishes VSS paths (see
+# sigma-racer-vehicle decodes these frames and publishes VSS paths (see
 # schemas/vss/sigma-cluster.vspec) on the telemetry socket.
 
 version: 0.1

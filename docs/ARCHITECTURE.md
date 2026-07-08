@@ -34,7 +34,7 @@ sequenceDiagram
     participant Kern as Linux
     participant SD as systemd
     participant West as weston
-    participant Veh as vehicle.service
+    participant Veh as sigma-racer-vehicle
     participant UI as cluster-ui.service
     participant Nav as navigation.service
 
@@ -55,7 +55,7 @@ Target boot order:
 
 1. `systemd` → mount `/data`, tmpfiles, network link
 2. `weston.service` → Wayland compositor
-3. `vehicle.service` + `gps.service` (parallel, before UI consumes data)
+3. `sigma-racer-vehicle` + `gps.service` (parallel, before UI consumes data)
 4. `cluster-ui.service` → full-screen Slint app with watchdog
 5. Non-critical: `navigation`, `bluetooth`, `camera`, `logger`, `diagnostics`, `ota`
 
@@ -79,7 +79,7 @@ Production images may enable `read-only-rootfs` with overlay for `/etc` and `/va
 | Shared memory (optional) | High-rate CAN mirror to UI |
 | SQLite on `/data` | Ride logs, trips, config |
 
-Application layer stays hardware-agnostic; `vehicle.service` normalizes SocketCAN frames into typed signals.
+Application layer stays hardware-agnostic; `sigma-racer-vehicle` normalizes SocketCAN frames into typed signals.
 
 ## Requirements implementation status
 
@@ -91,7 +91,7 @@ Application layer stays hardware-agnostic; `vehicle.service` normalizes SocketCA
 | Wayland + Weston kiosk | Done | `sigma-racer-wingman-services`, weston bbappend |
 | Rust + Slint UI | Done | `sigma-racer-cluster_git.bb` → `sigma-racer-cluster` |
 | systemd services | Done | `recipes-sigma-racer-wingman/*-service` |
-| SocketCAN | Done | `can-utils`, `vehicle.service` |
+| SocketCAN | Done | `can-utils`, `sigma-racer-vehicle` |
 | BlueZ / Wi-Fi | Done | packagegroup connectivity |
 | GPS | Partial | `gpsd`, `gps.service` stub |
 | MapLibre / Valhalla | Stub | `recipes-navigation/` |
@@ -105,7 +105,7 @@ Application layer stays hardware-agnostic; `vehicle.service` normalizes SocketCA
 
 1. Replace stub daemons with Rust services crate workspace
 2. Complete MapLibre Native and Valhalla cross-compile recipes
-3. Wire `vehicle.service` to SocketCAN DBC / signal schema
+3. Wire `sigma-racer-vehicle` to SocketCAN DBC / signal schema
 4. Add RAUC bundle recipe and delta update pipeline
 5. Validate i.MX 95 machine config when BSP is available
 6. Enable secure boot CST workflow per NXP documentation

@@ -2,7 +2,7 @@
 #
 # Extends COVESA Vehicle Signal Specification paths where they fit; adds
 # motorcycle-specific branches under Vehicle.Chassis and Vehicle.Body.
-# Target: vehicle.service normalizes CAN-FD (M7 safety core) → VSS paths → IPC.
+# Target: sigma-racer-vehicle normalizes CAN-FD (M7 safety core) → VSS paths → IPC.
 #
 # Spec reference: https://covesa.github.io/vehicle_signal_specification/
 

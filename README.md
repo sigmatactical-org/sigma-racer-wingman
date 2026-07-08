@@ -19,7 +19,10 @@ Custom Yocto Project distribution for an offline-first motorcycle instrument clu
 ```
 sigma-racer-wingman/
 ├── sigma-instrumentation/  → symlink to ../sigma-instrumentation (UI library)
-├── sigma-racer-cluster/                 → symlink to ../sigma-racer-cluster (sole UI binary)
+├── sigma-racer-cluster/    → symlink to ../sigma-racer-cluster (sole UI binary)
+├── sigma-racer-vehicle/    → symlink to ../sigma-racer-vehicle (vehicle daemon)
+├── sigma-racer-telemetry/  → symlink to ../sigma-racer-telemetry (VSS / IPC library)
+├── sigma-racer-probe/      → symlink to ../sigma-racer-probe (M7 CAN contract)
 ├── conf/                        Sample bblayers.conf and local.conf
 ├── docs/                        Architecture and requirements
 ├── meta-sigma-racer-wingman/     Custom Yocto layer
@@ -103,7 +106,7 @@ zcat tmp/deploy/images/sigma-racer-wingman-imx8mp/sigma-racer-wingman-image-sigm
 |---------|---------|
 | `weston.service` | Wayland compositor (no UI of its own) |
 | `cluster-ui.service` | **sigma-racer-cluster** — sole UI (`/usr/bin/sigma-racer-cluster`) |
-| `vehicle.service` | CAN / vehicle signal abstraction |
+| `sigma-racer-vehicle.service` | CAN → VSS telemetry publisher (`sigma-racer-vehicle`) |
 | `navigation.service` | Turn-by-turn / map window |
 | `gps.service` | GNSS input |
 | `bluetooth.service` | BlueZ companion phone interface |
@@ -112,7 +115,7 @@ zcat tmp/deploy/images/sigma-racer-wingman-imx8mp/sigma-racer-wingman-image-sigm
 | `ota.service` | RAUC update orchestration |
 | `diagnostics.service` | DTC / health monitoring |
 
-Stub services (`vehicle`, `navigation`, etc.) install placeholder daemons until real implementations land. Replace recipes under `recipes-sigma-racer-wingman/` as subsystems mature.
+Stub services (`navigation`, etc.) install placeholder daemons until real implementations land. `sigma-racer-vehicle` is the real vehicle signal daemon.
 
 ## Production options
 
@@ -139,6 +142,7 @@ Override source paths in `local.conf`:
 ```bitbake
 SIGMA_INSTRUMENTATION_SRC = "/path/to/sigma-instrumentation"
 SIGMA_RACER_CLUSTER_SRC = "/path/to/sigma-racer-cluster"
+SIGMA_RACER_VEHICLE_SRC = "/path/to/sigma-racer-vehicle"
 ```
 
 Desktop dev (windowed):

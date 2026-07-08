@@ -1,5 +1,5 @@
 [Unit]
-Description=Sigma Racer Wingman Vehicle Signal Abstraction (CAN / telemetry)
+Description=Sigma Racer vehicle signal daemon (CAN / telemetry)
 After=sigma-racer-wingman-can-setup.service network.target
 Before=cluster-ui.service
 Wants=sigma-racer-wingman-can-setup.service network.target
@@ -10,7 +10,7 @@ Type=simple
 User=vehicle
 Group=telemetry
 EnvironmentFile=-/etc/sigma-racer-wingman/vehicle.env
-ExecStart=/usr/bin/sigma-racer-wingman-vehicle
+ExecStart=/usr/bin/sigma-racer-vehicle
 Restart=on-failure
 RestartSec=2
 StandardOutput=journal

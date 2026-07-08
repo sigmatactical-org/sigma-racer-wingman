@@ -1,6 +1,6 @@
 # Sigma Racer Wingman vehicle telemetry IPC — message definitions (first draft v0.1)
 #
-# vehicle.service publishes on a Unix stream socket; cluster-ui (sigma-racer-cluster) subscribes.
+# sigma-racer-vehicle publishes on a Unix stream socket; cluster-ui (sigma-racer-cluster) subscribes.
 # All payloads reference VSS paths from schemas/vss/sigma-cluster.vspec.
 #
 # Socket (planned): /run/sigma-racer-wingman/vehicle.sock
@@ -24,7 +24,7 @@ envelope:
       description: ISO-8601 UTC timestamp of sample or event.
     seq:
       type: uint64
-      description: Monotonic sequence number from vehicle.service.
+      description: Monotonic sequence number from sigma-racer-vehicle.
 
 messages:
 
@@ -147,7 +147,7 @@ messages:
       value: true
 
   Heartbeat:
-    description: vehicle.service liveness; no VSS data.
+    description: sigma-racer-vehicle liveness; no VSS data.
     rate_hz: 1
     fields:
       uptime_ms:
@@ -160,7 +160,7 @@ messages:
       uptime_ms: 45000
 
   Goodbye:
-    description: Sent before vehicle.service exit so UI can show stale-data banner.
+    description: Sent before sigma-racer-vehicle exit so UI can show stale-data banner.
     example:
       version: "0.1"
       msg: Goodbye
