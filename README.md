@@ -22,7 +22,7 @@ sigma-racer-wingman/
 ├── sigma-racer-cluster/    → symlink to ../sigma-racer-cluster (sole UI binary)
 ├── sigma-racer-vehicle/    → symlink to ../sigma-racer-vehicle (vehicle daemon)
 ├── sigma-racer-telemetry/  → symlink to ../sigma-racer-telemetry (VSS / IPC library)
-├── sigma-racer-probe/      → symlink to ../sigma-racer-probe (M7 CAN contract)
+├── sigma-racer-sidearm/    → symlink to ../sigma-racer-sidearm (M7 firmware + CAN contract)
 ├── conf/                        Sample bblayers.conf and local.conf
 ├── docs/                        Architecture and requirements
 ├── meta-sigma-racer-wingman/     Custom Yocto layer
