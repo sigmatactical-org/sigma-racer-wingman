@@ -7,12 +7,16 @@ LICENSE = "MIT"
 inherit core-image
 
 IMAGE_FEATURES += " \
+    splash \
     ssh-server-openssh \
     tools-debug \
     debug-tweaks \
 "
 
-IMAGE_FEATURES:remove = "splash hwcodecs"
+IMAGE_FEATURES:remove = "hwcodecs"
+
+# Ensure psplash is present even if MACHINE_FEATURES quirks clear FEATURE_PACKAGES_splash.
+IMAGE_INSTALL:append = " psplash"
 
 IMAGE_INSTALL = " \
     packagegroup-sigma-racer-wingman-core \

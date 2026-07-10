@@ -1,7 +1,7 @@
 # sigma-racer-wingman-qemu needs a display backend for runqemu (gtk/sdl).
+# Applies to every 8.2.x qemu-system-native (poky's 8.2.7 and NXP's 8.2.2.imx).
 PACKAGECONFIG:append = " sdl"
 DEPENDS:append = " libsdl2-native"
 
-# glibc 2.41+ / Debian 13: avoid struct sched_attr redefinition in imx-qemu
-FILESEXTRAPATHS:prepend := "${THISDIR}/qemu:"
-SRC_URI:append = " file://0001-sched_attr-Do-not-define-for-glibc-2.41.patch"
+# The glibc-2.41 sched_attr patch is imx-only (poky 8.2.7 is already fixed); it
+# lives in dynamic-layers/fsl-bsp-release/ so it only applies to the i.MX BSP build.

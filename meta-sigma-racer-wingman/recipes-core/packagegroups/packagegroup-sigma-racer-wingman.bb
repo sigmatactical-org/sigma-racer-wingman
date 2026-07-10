@@ -37,12 +37,20 @@ RDEPENDS:${PN}-graphics = " \
     liberation-fonts \
 "
 
+# The M7 (Cortex-M7) firmware is a bare-metal thumbv7em-none-eabihf build. The
+# Yocto Rust toolchain currently ships no `core`/`compiler_builtins` for that
+# target, so `sigma-racer-sidearm-firmware` cannot cross-compile yet (and QEMU
+# has no M7 at all). Gate it off by default so both images build; set
+# INCLUDE_SIDEARM_FIRMWARE = "1" once the toolchain provides thumbv7em (via
+# rust-src + -Zbuild-std, or a target-enabled rust-cross).
+INCLUDE_SIDEARM_FIRMWARE ??= "0"
+
 RDEPENDS:${PN}-vehicle = " \
     can-utils \
     can-network \
     iproute2 \
     sigma-racer-vehicle \
-    sigma-racer-sidearm-firmware \
+    ${@bb.utils.contains('INCLUDE_SIDEARM_FIRMWARE', '1', 'sigma-racer-sidearm-firmware', '', d)} \
 "
 
 RDEPENDS:${PN}-navigation = " \

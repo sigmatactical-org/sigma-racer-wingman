@@ -10,6 +10,26 @@ inherit cargo cargo-update-recipe-crates systemd externalsrc
 
 EXTERNALSRC = "${SIGMA_RACER_CLUSTER_SRC}"
 
+# telemetry (and its sidearm dep) are pinned as git deps but are checked out
+# locally under embedded/. Patch them to the in-tree sources so the offline
+# (--frozen) cargo build resolves them without ssh/network — the Yocto
+# equivalent of the crate's .cargo/config.toml [patch] used for local dev. A
+# `paths` override is not enough: cargo resolves the git *source* first, which
+# --frozen forbids; `[patch]` replaces the source, and the committed Cargo.lock
+# already records these as path deps so --frozen stays satisfied.
+# Append to the cargo config in do_configure (written fresh there) rather than
+# do_compile, so re-runs don't stack duplicate [patch] keys.
+do_configure:append() {
+	cat >> ${CARGO_HOME}/config <<-EOF
+
+	[patch."ssh://git@github.com/sigmatactical-org/sigma-racer-sidearm.git"]
+	sigma-racer-sidearm = { path = "${SIGMA_RACER_SIDEARM_SRC}" }
+
+	[patch."ssh://git@github.com/sigmatactical-org/sigma-racer-telemetry.git"]
+	sigma-racer-telemetry = { path = "${SIGMA_RACER_TELEMETRY_SRC}" }
+	EOF
+}
+
 SRC_URI = " \
     git://github.com/sigmatactical-org/sigma-racer-cluster.git;protocol=https;name=cluster;nobranch=1 \
     file://cluster-ui.service \

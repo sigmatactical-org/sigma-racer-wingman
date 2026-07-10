@@ -7,6 +7,7 @@ LICENSE = "MIT"
 inherit core-image
 
 IMAGE_FEATURES += " \
+    splash \
     hwcodecs \
 "
 
@@ -18,8 +19,8 @@ IMAGE_FEATURES += " \
 SIGMA_RACER_WINGMAN_DEBUG ??= "0"
 IMAGE_FEATURES += "${@'ssh-server-openssh tools-debug debug-tweaks' if d.getVar('SIGMA_RACER_WINGMAN_DEBUG') == '1' else ''}"
 
-# No splash — instrumentation is the only UI from first frame
-IMAGE_FEATURES:remove = "splash"
+# Boot splash is psplash (grey Sigma mark on black) — not the cluster UI.
+IMAGE_INSTALL:append = " psplash"
 
 # Core platform — instrumentation is the sole UI application
 IMAGE_INSTALL = " \

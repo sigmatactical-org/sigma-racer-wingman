@@ -1,10 +1,14 @@
-# Sigma Racer Wingman QEMU — Weston without VT/tty7 (QEMU SDL/virtio-gpu has no usable console VT)
+# Sigma Racer Wingman — Weston kiosk compositor.
+# Socket at /run/weston/wayland-0 (matches /etc/sigma-racer-wingman/ui.env).
+# No VT — works on i.MX DRM and QEMU virtio-gpu/SDL.
+
 [Unit]
 Description=Weston, a Wayland compositor, as a system service
 Documentation=man:weston(1) man:weston.ini(5)
 Requires=systemd-user-sessions.service dbus.socket seatd.service
-After=systemd-user-sessions.service dbus.socket seatd.service
+After=systemd-user-sessions.service dbus.socket seatd.service psplash-start.service
 Before=graphical.target
+Conflicts=weston.socket
 
 [Service]
 Type=simple
@@ -13,6 +17,7 @@ RuntimeDirectory=weston
 RuntimeDirectoryMode=0770
 Environment=XDG_RUNTIME_DIR=/run/weston
 UMask=0007
+ExecStartPre=-/usr/bin/psplash-write QUIT
 ExecStart=/usr/bin/weston --config=/etc/xdg/weston/sigma-racer-wingman.ini --socket=wayland-0
 User=weston
 Group=wayland

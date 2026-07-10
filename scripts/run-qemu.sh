@@ -3,7 +3,10 @@
 #
 # Prerequisites:
 #   source setup-environment.sh sigma-racer-wingman-qemu
-#   bitbake sigma-racer-wingman-image-virt
+#   bitbake sigma-racer-wingman-image
+#
+# Boots sigma-racer-wingman-image (ext4 on the qemu machine). Override with:
+#   IMAGE=sigma-racer-wingman-image-virt ../scripts/run-qemu.sh
 #
 # Yocto's qemu-system-native is often headless-only (no gtk/sdl). This script
 # falls back to the host qemu-system-x86 package when needed:
@@ -18,16 +21,24 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SIGMA_RACER_WINGMAN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 BUILD_DIR="${SIGMA_RACER_WINGMAN_ROOT}/build-virt"
 DEPLOY_DIR="${BUILD_DIR}/tmp/deploy/images/sigma-racer-wingman-qemu"
-ROOTFS="${DEPLOY_DIR}/sigma-racer-wingman-image-virt-sigma-racer-wingman-qemu.rootfs.ext4"
-QBCONF="${DEPLOY_DIR}/sigma-racer-wingman-image-virt-sigma-racer-wingman-qemu.rootfs.qemuboot.conf"
+IMAGE="${IMAGE:-sigma-racer-wingman-image}"
+ROOTFS="${DEPLOY_DIR}/${IMAGE}-sigma-racer-wingman-qemu.rootfs.ext4"
+QBCONF="${DEPLOY_DIR}/${IMAGE}-sigma-racer-wingman-qemu.rootfs.qemuboot.conf"
 YOCTO_QEMU="${BUILD_DIR}/tmp/work/x86_64-linux/qemu-helper-native/1.0/recipe-sysroot-native/usr/bin/qemu-system-x86_64"
 
 if [[ ! -f "${ROOTFS}" ]]; then
     echo "error: ${ROOTFS} not found" >&2
     echo "  source setup-environment.sh sigma-racer-wingman-qemu" >&2
-    echo "  bitbake sigma-racer-wingman-image-virt" >&2
+    echo "  bitbake ${IMAGE}" >&2
     exit 1
 fi
+
+if [[ ! -f "${QBCONF}" ]]; then
+    echo "error: ${QBCONF} not found" >&2
+    exit 1
+fi
+
+echo "run-qemu: booting ${IMAGE} ($(readlink -f "${ROOTFS}" 2>/dev/null || echo "${ROOTFS}"))" >&2
 
 if ! command -v runqemu >/dev/null 2>&1; then
     echo "error: runqemu not in PATH — source setup-environment.sh sigma-racer-wingman-qemu first" >&2
@@ -71,9 +82,9 @@ cd "${BUILD_DIR}"
 
 # Kill stale instances that hold the rootfs write lock.
 # pgrep -x misses qemu-system-x86_64 (name truncated to 15 chars on Linux).
-if pgrep -f "${ROOTFS}" >/dev/null 2>&1; then
-    echo "warning: stopping existing QEMU using ${ROOTFS}" >&2
-    pkill -f "${ROOTFS}" || true
+if pgrep -f "${DEPLOY_DIR}/.*rootfs.ext4" >/dev/null 2>&1; then
+    echo "warning: stopping existing QEMU using a rootfs under ${DEPLOY_DIR}" >&2
+    pkill -f "${DEPLOY_DIR}/.*rootfs.ext4" || true
     sleep 2
 fi
 

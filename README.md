@@ -36,7 +36,9 @@ sigma-racer-wingman/
 
 **sigma-racer-cluster** (`sigma-racer-cluster`) is the only UI on the device. Weston runs as a headless Wayland compositor; the cluster app fills the screen via `cluster-ui.service`.
 
-Boot chain: `graphical.target` → `sigma-racer-wingman-ui.target` → `weston.service` + `cluster-ui.service` → `/usr/bin/sigma-racer-cluster`
+Boot chain: `sysinit` (psplash — grey Sigma on black) → `graphical.target` → `sigma-racer-wingman-ui.target` → `weston.service` + `cluster-ui.service` → `/usr/bin/sigma-racer-cluster`
+
+Framebuffer splash assets live in `meta-sigma-racer-wingman/recipes-core/psplash/` (mark from `Source/sigma/sigma.svg`).
 
 ## Quick start
 
@@ -82,11 +84,11 @@ Run the full Sigma Racer Wingman stack locally without NXP hardware — same pan
 
 ```bash
 source setup-environment.sh sigma-racer-wingman-qemu
-bitbake sigma-racer-wingman-image-virt
-./scripts/run-qemu.sh
+bitbake sigma-racer-wingman-image
+../scripts/run-qemu.sh
 ```
 
-Uses `build-virt/` (separate from hardware `build/`) and a slimmer layer set — no meta-imx or meta-freescale. The QEMU GTK window is fixed at **800×480**.
+Uses `build-virt/` (separate from hardware `build/`) and a slimmer layer set — no meta-imx or meta-freescale. The QEMU SDL window is fixed at **800×480**. For the slimmer virt-only image: `IMAGE=sigma-racer-wingman-image-virt ../scripts/run-qemu.sh`.
 
 For UI-only iteration without Yocto:
 

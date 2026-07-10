@@ -1,23 +1,19 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+# Sigma Racer Wingman — Weston init overrides.
+#
+# Replace the stock VT-bound weston.service with a DRM kiosk unit that exposes
+# the Wayland socket at /run/weston/wayland-0 (see ui.env / cluster-ui.service).
 
-# Use Sigma Racer Wingman Weston kiosk config (Wayland-only — no Xwayland)
-PACKAGECONFIG:remove = "xwayland"
-INITSCRIPT_PARAMS = "defaults 09"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI:append:sigma-racer-wingman-qemu = " file://weston-qemu.service "
+SRC_URI:append = " file://weston-sigma.service"
 
-SYSTEMD_SERVICE:${PN}:remove:sigma-racer-wingman-qemu = "weston.socket"
-
-do_install:append:sigma-racer-wingman-qemu() {
-    install -m 0644 ${WORKDIR}/weston-qemu.service ${D}${systemd_system_unitdir}/weston.service
-    rm -f ${D}${systemd_system_unitdir}/weston.socket
-}
+# Stock recipe also enables weston.socket (/run/wayland-0) — that path does not
+# match the cluster, and socket activation fights our unit. Ship only weston.service.
+SYSTEMD_SERVICE:${PN} = "weston.service"
 
 do_install:append() {
-    if [ -f ${D}${sysconfdir}/xdg/weston/weston.ini ]; then
-        rm -f ${D}${sysconfdir}/xdg/weston/weston.ini
-    fi
-    ln -sf sigma-racer-wingman.ini ${D}${sysconfdir}/xdg/weston/weston.ini
+    install -m 0644 ${WORKDIR}/weston-sigma.service \
+        ${D}${systemd_system_unitdir}/weston.service
+    # Drop the unused socket unit if the base recipe installed it.
+    rm -f ${D}${systemd_system_unitdir}/weston.socket
 }
-
-RDEPENDS:${PN} += "sigma-racer-wingman-services"
