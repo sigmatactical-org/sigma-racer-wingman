@@ -13,8 +13,10 @@ PV = "0.1.0"
 
 inherit allarch systemd externalsrc
 
-# Host cargo build scripts need a native C compiler in bitbake's stripped PATH.
-DEPENDS += "gcc-native"
+# Built with the host rustup toolchain (see do_compile), not Yocto's cross
+# toolchain, so no bitbake-provided compiler is required. OE has no
+# "gcc-native" recipe; the host gcc on /usr/bin is used if a build script
+# ever needs a C compiler.
 
 EXTERNALSRC = "${SIGMA_RACER_SIDEARM_SRC}"
 
@@ -51,9 +53,11 @@ do_compile() {
         bbfatal "host cargo not found (tried ${SIDEARM_CARGO}). Install rustup + target ${SIDEARM_CARGO_TARGET}, or pre-build with: (cd ${SIGMA_RACER_SIDEARM_SRC} && cargo build --release --no-default-features --features firmware)"
     fi
 
-    # rustup shims need their bin dir on PATH for rustc/rustdoc; build.rs needs cc.
-    export PATH="${STAGING_BINDIR_NATIVE}:${STAGING_BINDIRTOOLCHAIN_NATIVE}:/usr/bin:/bin:$(dirname "$CARGO"):${PATH}"
-    export CC="${CC:-${STAGING_BINDIR_NATIVE}/gcc}"
+    # rustup shims need their bin dir on PATH for rustc/rustdoc. Keep the host
+    # /usr/bin ahead of any staged natives so a build script that needs a C
+    # compiler finds the host gcc (this recipe pulls in no gcc-native).
+    export PATH="/usr/bin:/bin:${STAGING_BINDIR_NATIVE}:${STAGING_BINDIRTOOLCHAIN_NATIVE}:$(dirname "$CARGO"):${PATH}"
+    export CC="${CC:-$(command -v gcc)}"
     export HOST_CC="${HOST_CC:-$CC}"
 
     bbnote "Building M7 firmware with $CARGO (CC=$CC)"
