@@ -17,18 +17,7 @@ EXTERNALSRC = "${SIGMA_RACER_VEHICLE_SRC}"
 # `paths` override is not enough: cargo still resolves the git *source* first,
 # which --frozen forbids. `[patch]` replaces the source outright, and the
 # committed Cargo.lock already records these as path deps so --frozen is happy.
-# Append to the cargo config in do_configure (written fresh there) rather than
-# do_compile, so re-runs don't stack duplicate [patch] keys.
-do_configure:append() {
-	cat >> ${CARGO_HOME}/config <<-EOF
-
-	[patch."ssh://git@github.com/sigmatactical-org/sigma-racer-sidearm.git"]
-	sigma-racer-sidearm = { path = "${SIGMA_RACER_SIDEARM_SRC}" }
-
-	[patch."ssh://git@github.com/sigmatactical-org/sigma-racer-telemetry.git"]
-	sigma-racer-telemetry = { path = "${SIGMA_RACER_TELEMETRY_SRC}" }
-	EOF
-}
+require ${THISDIR}/../sigma-cargo-sibling-patches.inc
 
 SRC_URI = " \
     git://github.com/sigmatactical-org/sigma-racer-vehicle.git;protocol=https;name=vehicle;nobranch=1 \

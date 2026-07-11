@@ -27,6 +27,9 @@ EOF
 fi
 
 # shellcheck source=/dev/null
+source "${SCRIPT_DIR}/resolve-cache-dirs.sh"
+
+# shellcheck source=/dev/null
 set +u
 source "${WINGMAN_ROOT}/setup-environment.sh" "${MACHINE}" "${BUILD_DIR}"
 set -u

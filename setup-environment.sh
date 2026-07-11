@@ -133,6 +133,18 @@ else
     sed -i 's/^DISTRO.*/DISTRO = "sigma-racer-wingman"/' conf/local.conf
 fi
 
+# Optional shared caches (CI self-hosted runner or explicit SIGMA_*_DIR).
+_sigma_apply_cache_dir() {
+    local var="$1"
+    local value="$2"
+    if [[ -n "${value}" ]]; then
+        sed -i "/^${var} /d" conf/local.conf
+        echo "${var} = \"${value}\"" >> conf/local.conf
+    fi
+}
+_sigma_apply_cache_dir DL_DIR "${SIGMA_DL_DIR:-}"
+_sigma_apply_cache_dir SSTATE_DIR "${SIGMA_SSTATE_DIR:-}"
+
 # BitBake reads machine layers from BBLAYERS — warn about missing optional layers
 _missing_layers=()
 if [[ "${MACHINE}" == "sigma-racer-wingman-qemu" ]]; then

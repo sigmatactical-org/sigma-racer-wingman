@@ -17,6 +17,9 @@ fi
 
 "${WINGMAN_ROOT}/scripts/bootstrap-layers.sh" --virt-only
 
+# shellcheck source=/dev/null
+source "${SCRIPT_DIR}/resolve-cache-dirs.sh"
+
 # setup-environment.sh must be sourced so bitbake inherits the environment.
 set +u
 # shellcheck source=/dev/null
