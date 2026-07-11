@@ -77,7 +77,7 @@ Workflow: `.github/workflows/yocto-release.yml`
 
 - **Triggers:** tag `wingman-*`, manual dispatch
 - **Target:** `sigma-racer-wingman-image` (imx8mp)
-- **Requires:** `meta-imx` checkout on the runner, `ACCEPT_FSL_EULA = "1"`
+- **Requires:** `meta-imx` (auto-linked from `$HOME/Source/sigma/embedded/meta-imx` on the self-hosted runner, or cloned by `scripts/ci/bootstrap-meta-imx.sh`), `ACCEPT_FSL_EULA = "1"`
 
 Local equivalent:
 

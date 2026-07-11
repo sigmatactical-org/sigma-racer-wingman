@@ -68,14 +68,13 @@ Still required for hardware builds:
 Then initialize the build environment:
   cd ${SIGMA_RACER_WINGMAN_ROOT}
   source setup-environment.sh sigma-racer-wingman-imx8mp
+  bitbake sigma-racer-wingman-image
 
-Virtual testing (no NXP BSP):
-  ${SIGMA_RACER_WINGMAN_ROOT}/scripts/bootstrap-layers.sh --virt-only
-  source setup-environment.sh sigma-racer-wingman-qemu
+For QEMU virt testing only (no NXP BSP), use bootstrap-layers.sh --virt-only instead.
 
 EOF
 
     if [[ ! -d "${YOCTO_BASE}/meta-imx/meta-bsp" ]]; then
-        echo "note: meta-imx not present yet — needed for hardware bitbake, not for sigma-racer-wingman-qemu" >&2
+        echo "note: meta-imx not present yet — run scripts/ci/bootstrap-meta-imx.sh or clone per above" >&2
     fi
 fi

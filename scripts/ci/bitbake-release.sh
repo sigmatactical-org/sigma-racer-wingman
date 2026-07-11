@@ -17,6 +17,9 @@ cd "${WINGMAN_ROOT}"
 "${SCRIPT_DIR}/prepare-workspace.sh"
 "${WINGMAN_ROOT}/scripts/bootstrap-layers.sh"
 
+chmod +x "${SCRIPT_DIR}/bootstrap-meta-imx.sh"
+"${SCRIPT_DIR}/bootstrap-meta-imx.sh"
+
 if [[ ! -d "${YOCTO_BASE}/meta-imx/meta-bsp" ]]; then
   cat >&2 <<EOF
 error: meta-imx is required for ${MACHINE}
