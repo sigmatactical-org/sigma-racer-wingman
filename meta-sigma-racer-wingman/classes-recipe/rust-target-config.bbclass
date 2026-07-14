@@ -16,7 +16,7 @@ python do_rust_gen_targets:append () {
         with open(path, 'r') as f:
             tspec = json.load(f)
         changed = False
-        for key in ('target-c-int-width',):
+        for key in ('target-c-int-width', 'target-pointer-width'):
             if key in tspec and isinstance(tspec[key], str):
                 tspec[key] = int(tspec[key])
                 changed = True

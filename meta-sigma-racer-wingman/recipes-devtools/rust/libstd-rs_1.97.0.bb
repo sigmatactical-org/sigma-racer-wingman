@@ -7,4 +7,6 @@ LIC_FILES_CHKSUM = "file://../../COPYRIGHT;md5=11a3899825f4376896e438c8c753f8dc"
 S = "${RUSTSRC}/library/sysroot"
 
 # ref: https://github.com/rust-lang/rust/issues/133857
-RUSTFLAGS += "-Zforce-unstable-if-unmarked"
+# Rust 1.97 additionally gates custom target JSON behind -Zunstable-options
+# (accepted here because libstd-rs.inc exports RUSTC_BOOTSTRAP=1).
+RUSTFLAGS += "-Zforce-unstable-if-unmarked -Zunstable-options"
