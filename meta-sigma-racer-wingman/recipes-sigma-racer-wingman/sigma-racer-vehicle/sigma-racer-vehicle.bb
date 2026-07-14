@@ -31,7 +31,7 @@ require ${THISDIR}/sigma-racer-vehicle-crates.inc
 
 # Full 40-char SHA-1 so BitBake's git fetcher treats it as a resolved revision
 # and skips the ls-remote lookup (a short hash is read as an unresolved ref).
-SRCREV = "4d4a0e2b531229ce5d5bec29227762d2b6b123f3"
+SRCREV = "44a5b66635cb8c0f915a1fe44c0e0c516f65ff72"
 
 S = "${WORKDIR}/git"
 

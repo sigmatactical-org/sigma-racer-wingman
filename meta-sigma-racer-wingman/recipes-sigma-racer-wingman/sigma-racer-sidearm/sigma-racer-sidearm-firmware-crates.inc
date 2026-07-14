@@ -16,7 +16,7 @@ SRC_URI += " \
     crate://crates.io/darling/0.20.11 \
     crate://crates.io/darling_core/0.20.11 \
     crate://crates.io/darling_macro/0.20.11 \
-    crate://crates.io/dbc-rs/0.7.1 \
+    crate://crates.io/dbc-rs/0.8.0 \
     crate://crates.io/document-features/0.2.12 \
     crate://crates.io/embassy-executor/0.10.0 \
     crate://crates.io/embassy-executor-macros/0.8.0 \
@@ -57,7 +57,7 @@ SRC_URI += " \
     crate://crates.io/semver-parser/0.7.0 \
     crate://crates.io/sharded-slab/0.1.7 \
     crate://crates.io/shlex/2.0.1 \
-    crate://crates.io/sigma-bounded/0.1.3 \
+    crate://crates.io/sigma-bounded/0.2.0 \
     crate://crates.io/smallvec/1.15.2 \
     crate://crates.io/stable_deref_trait/1.2.1 \
     crate://crates.io/strsim/0.11.1 \
@@ -93,7 +93,7 @@ SRC_URI[critical-section-1.2.0.sha256sum] = "790eea4361631c5e7d22598ecd5723ff611
 SRC_URI[darling-0.20.11.sha256sum] = "fc7f46116c46ff9ab3eb1597a45688b6715c6e628b5c133e288e709a29bcb4ee"
 SRC_URI[darling_core-0.20.11.sha256sum] = "0d00b9596d185e565c2207a0b01f8bd1a135483d02d9b7b0a54b11da8d53412e"
 SRC_URI[darling_macro-0.20.11.sha256sum] = "fc34b93ccb385b40dc71c6fceac4b2ad23662c7eeb248cf10d529b7e055b6ead"
-SRC_URI[dbc-rs-0.7.1.sha256sum] = "2ee7c13ca0b470f850f67e57e6d7a37a982665742a13fb0f09d2035220bef3f0"
+SRC_URI[dbc-rs-0.8.0.sha256sum] = "a1bad30621374ab6b3c94a20bdee7e91856231f1f6583b59e52c44c50c72f3d1"
 SRC_URI[document-features-0.2.12.sha256sum] = "d4b8a88685455ed29a21542a33abd9cb6510b6b129abadabdcef0f4c55bc8f61"
 SRC_URI[embassy-executor-0.10.0.sha256sum] = "5d0d3b15c9d7dc4fec1d8cb77112472fb008b3b28c51ad23838d83587a6d2f1e"
 SRC_URI[embassy-executor-macros-0.8.0.sha256sum] = "d11a246f53de5f97a387f40ac24726817cd0b6f833e7603baac784f29d6ff276"
@@ -134,7 +134,7 @@ SRC_URI[semver-0.9.0.sha256sum] = "1d7eb9ef2c18661902cc47e535f9bc51b78acd254da71
 SRC_URI[semver-parser-0.7.0.sha256sum] = "388a1df253eca08550bef6c72392cfe7c30914bf41df5269b68cbd6ff8f570a3"
 SRC_URI[sharded-slab-0.1.7.sha256sum] = "f40ca3c46823713e0d4209592e8d6e826aa57e928f09752619fc696c499637f6"
 SRC_URI[shlex-2.0.1.sha256sum] = "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba"
-SRC_URI[sigma-bounded-0.1.3.sha256sum] = "977e65031cbd5b33463cdb8313fb06a2fb0b548cd81743c18c2d3a639e98a0be"
+SRC_URI[sigma-bounded-0.2.0.sha256sum] = "8e84f6d3ca7857bd113d23709b7060aaf5c86ed3ad99f057fd88d3ad58df6a11"
 SRC_URI[smallvec-1.15.2.sha256sum] = "8ed6a63f02c8539c91a8685a86f4099661ba3da017932f6ebbea6de3f0fa7c90"
 SRC_URI[stable_deref_trait-1.2.1.sha256sum] = "6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596"
 SRC_URI[strsim-0.11.1.sha256sum] = "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
