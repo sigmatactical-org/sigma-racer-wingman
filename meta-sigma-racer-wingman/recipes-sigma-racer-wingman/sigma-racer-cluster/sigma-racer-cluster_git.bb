@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE-APACHE;md5=d8b08026ec729e41461816aba7fc28c4 \
 "
 
-inherit cargo cargo-update-recipe-crates systemd externalsrc
+inherit cargo cargo-update-recipe-crates pkgconfig systemd externalsrc
 
 EXTERNALSRC = "${SIGMA_RACER_CLUSTER_SRC}"
 
