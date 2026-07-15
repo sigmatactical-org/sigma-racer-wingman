@@ -98,7 +98,7 @@ SRC_URI += " \
     crate://crates.io/ctor/0.10.1 \
     crate://crates.io/cursor-icon/1.2.0 \
     crate://crates.io/data-url/0.3.2 \
-    crate://crates.io/dbc-rs/0.8.0 \
+    crate://crates.io/dbc-rs/0.9.0 \
     crate://crates.io/derive_more/2.1.1 \
     crate://crates.io/derive_more-impl/2.1.1 \
     crate://crates.io/derive_utils/0.15.1 \
@@ -702,7 +702,7 @@ SRC_URI[crypto-common-0.2.2.sha256sum] = "ce6e4c961d6cd6c9a86db418387425e8bdeaf0
 SRC_URI[ctor-0.10.1.sha256sum] = "83cf0d42651b16c6dfe68685716d18480d18a9c39c62d76e8cf3eb6ed5d8bcbf"
 SRC_URI[cursor-icon-1.2.0.sha256sum] = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
 SRC_URI[data-url-0.3.2.sha256sum] = "be1e0bca6c3637f992fc1cc7cbc52a78c1ef6db076dbf1059c4323d6a2048376"
-SRC_URI[dbc-rs-0.8.0.sha256sum] = "a1bad30621374ab6b3c94a20bdee7e91856231f1f6583b59e52c44c50c72f3d1"
+SRC_URI[dbc-rs-0.9.0.sha256sum] = "84b641a4e20fb86f061f12ec5845e35df2e1a16fcc4437f66decf2388ec8a853"
 SRC_URI[derive_more-2.1.1.sha256sum] = "d751e9e49156b02b44f9c1815bcb94b984cdcc4396ecc32521c739452808b134"
 SRC_URI[derive_more-impl-2.1.1.sha256sum] = "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb"
 SRC_URI[derive_utils-0.15.1.sha256sum] = "362f47930db19fe7735f527e6595e4900316b893ebf6d48ad3d31be928d57dd6"

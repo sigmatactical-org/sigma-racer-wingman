@@ -97,7 +97,7 @@ SRC_URI += " \
     crate://crates.io/ctor/0.10.1 \
     crate://crates.io/cursor-icon/1.2.0 \
     crate://crates.io/data-url/0.3.2 \
-    crate://crates.io/dbc-rs/0.7.1 \
+    crate://crates.io/dbc-rs/0.9.0 \
     crate://crates.io/derive_more/2.1.1 \
     crate://crates.io/derive_more-impl/2.1.1 \
     crate://crates.io/derive_utils/0.15.1 \
@@ -409,7 +409,7 @@ SRC_URI += " \
     crate://crates.io/sha2/0.11.0 \
     crate://crates.io/shlex/1.3.0 \
     crate://crates.io/shlex/2.0.1 \
-    crate://crates.io/sigma-bounded/0.1.3 \
+    crate://crates.io/sigma-bounded/0.2.0 \
     crate://crates.io/signal-hook-registry/1.4.8 \
     crate://crates.io/simd-adler32/0.3.10 \
     crate://crates.io/simd_cesu8/1.2.0 \
@@ -694,7 +694,7 @@ SRC_URI[crypto-common-0.2.2.sha256sum] = "ce6e4c961d6cd6c9a86db418387425e8bdeaf0
 SRC_URI[ctor-0.10.1.sha256sum] = "83cf0d42651b16c6dfe68685716d18480d18a9c39c62d76e8cf3eb6ed5d8bcbf"
 SRC_URI[cursor-icon-1.2.0.sha256sum] = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
 SRC_URI[data-url-0.3.2.sha256sum] = "be1e0bca6c3637f992fc1cc7cbc52a78c1ef6db076dbf1059c4323d6a2048376"
-SRC_URI[dbc-rs-0.7.1.sha256sum] = "2ee7c13ca0b470f850f67e57e6d7a37a982665742a13fb0f09d2035220bef3f0"
+SRC_URI[dbc-rs-0.9.0.sha256sum] = "84b641a4e20fb86f061f12ec5845e35df2e1a16fcc4437f66decf2388ec8a853"
 SRC_URI[derive_more-2.1.1.sha256sum] = "d751e9e49156b02b44f9c1815bcb94b984cdcc4396ecc32521c739452808b134"
 SRC_URI[derive_more-impl-2.1.1.sha256sum] = "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb"
 SRC_URI[derive_utils-0.15.1.sha256sum] = "362f47930db19fe7735f527e6595e4900316b893ebf6d48ad3d31be928d57dd6"
@@ -1006,7 +1006,7 @@ SRC_URI[serde_spanned-1.1.1.sha256sum] = "6662b5879511e06e8999a8a235d848113e942c
 SRC_URI[sha2-0.11.0.sha256sum] = "446ba717509524cb3f22f17ecc096f10f4822d76ab5c0b9822c5f9c284e825f4"
 SRC_URI[shlex-1.3.0.sha256sum] = "0fda2ff0d084019ba4d7c6f371c95d8fd75ce3524c3cb8fb653a3023f6323e64"
 SRC_URI[shlex-2.0.1.sha256sum] = "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba"
-SRC_URI[sigma-bounded-0.1.3.sha256sum] = "977e65031cbd5b33463cdb8313fb06a2fb0b548cd81743c18c2d3a639e98a0be"
+SRC_URI[sigma-bounded-0.2.0.sha256sum] = "8e84f6d3ca7857bd113d23709b7060aaf5c86ed3ad99f057fd88d3ad58df6a11"
 SRC_URI[signal-hook-registry-1.4.8.sha256sum] = "c4db69cba1110affc0e9f7bcd48bbf87b3f4fc7c61fc9155afd4c469eb3d6c1b"
 SRC_URI[simd-adler32-0.3.10.sha256sum] = "3a219298ac11a56ea9a6d2120044824d6f01aeb034955e7af7bc16858527deea"
 SRC_URI[simd_cesu8-1.2.0.sha256sum] = "11031e251abf8611c80f460e19dbdeb54a66db918e49c65a7065b46ac7aec520"

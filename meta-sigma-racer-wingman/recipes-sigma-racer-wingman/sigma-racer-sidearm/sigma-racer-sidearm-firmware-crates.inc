@@ -16,7 +16,7 @@ SRC_URI += " \
     crate://crates.io/darling/0.20.11 \
     crate://crates.io/darling_core/0.20.11 \
     crate://crates.io/darling_macro/0.20.11 \
-    crate://crates.io/dbc-rs/0.8.0 \
+    crate://crates.io/dbc-rs/0.9.0 \
     crate://crates.io/document-features/0.2.12 \
     crate://crates.io/embassy-executor/0.10.0 \
     crate://crates.io/embassy-executor-macros/0.8.0 \
@@ -93,7 +93,7 @@ SRC_URI[critical-section-1.2.0.sha256sum] = "790eea4361631c5e7d22598ecd5723ff611
 SRC_URI[darling-0.20.11.sha256sum] = "fc7f46116c46ff9ab3eb1597a45688b6715c6e628b5c133e288e709a29bcb4ee"
 SRC_URI[darling_core-0.20.11.sha256sum] = "0d00b9596d185e565c2207a0b01f8bd1a135483d02d9b7b0a54b11da8d53412e"
 SRC_URI[darling_macro-0.20.11.sha256sum] = "fc34b93ccb385b40dc71c6fceac4b2ad23662c7eeb248cf10d529b7e055b6ead"
-SRC_URI[dbc-rs-0.8.0.sha256sum] = "a1bad30621374ab6b3c94a20bdee7e91856231f1f6583b59e52c44c50c72f3d1"
+SRC_URI[dbc-rs-0.9.0.sha256sum] = "84b641a4e20fb86f061f12ec5845e35df2e1a16fcc4437f66decf2388ec8a853"
 SRC_URI[document-features-0.2.12.sha256sum] = "d4b8a88685455ed29a21542a33abd9cb6510b6b129abadabdcef0f4c55bc8f61"
 SRC_URI[embassy-executor-0.10.0.sha256sum] = "5d0d3b15c9d7dc4fec1d8cb77112472fb008b3b28c51ad23838d83587a6d2f1e"
 SRC_URI[embassy-executor-macros-0.8.0.sha256sum] = "d11a246f53de5f97a387f40ac24726817cd0b6f833e7603baac784f29d6ff276"
