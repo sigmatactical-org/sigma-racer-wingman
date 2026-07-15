@@ -1,10 +1,9 @@
 SUMMARY = "Sigma Racer Wingman instrument cluster UI"
 HOMEPAGE = "https://github.com/sigmatactical-org/sigma-racer-cluster"
-LICENSE = "MIT | Apache-2.0"
-LIC_FILES_CHKSUM = " \
-    file://LICENSE-MIT;md5=a082e45a87ea9bc152345be779914257 \
-    file://LICENSE-APACHE;md5=d8b08026ec729e41461816aba7fc28c4 \
-"
+# The cluster links Slint under Slint's GPL option (embedded deployment);
+# see the repository's README for the licensing boundary.
+LICENSE = "GPL-3.0-only"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 inherit cargo cargo-update-recipe-crates pkgconfig systemd externalsrc
 
@@ -24,13 +23,14 @@ SRC_URI = " \
     file://cluster-ui.service \
     file://sigma-racer-wingman-ui.env \
     file://sigma-racer-wingman-ui-qemu.env \
+    file://sigma-racer-cluster-connman.conf \
 "
 
 require ${THISDIR}/sigma-racer-cluster-crates.inc
 
 UI_ENV = "${@bb.utils.contains('MACHINE', 'sigma-racer-wingman-qemu', 'sigma-racer-wingman-ui-qemu.env', 'sigma-racer-wingman-ui.env', d)}"
 
-SRCREV = "8e0522d88132bfcfaa1592aca6a79d88c3bcb886"
+SRCREV = "c35c4a1a4fe47bda69549eea1b85ac7d2f2157ab"
 
 S = "${WORKDIR}/git"
 
@@ -63,12 +63,19 @@ do_install() {
     install -m 0644 ${WORKDIR}/cluster-ui.service ${D}${systemd_system_unitdir}/cluster-ui.service
     install -d ${D}${sysconfdir}/sigma-racer-wingman
     install -m 0644 ${WORKDIR}/${UI_ENV} ${D}${sysconfdir}/sigma-racer-wingman/ui.env
+
+    # connman's stock D-Bus policy denies non-root senders; admit the
+    # cluster user so the Connectivity window can manage Wi-Fi.
+    install -d ${D}${datadir}/dbus-1/system.d
+    install -m 0644 ${WORKDIR}/sigma-racer-cluster-connman.conf \
+        ${D}${datadir}/dbus-1/system.d/sigma-racer-cluster-connman.conf
 }
 
 FILES:${PN} += " \
     ${bindir}/sigma-racer-cluster \
     ${systemd_system_unitdir}/cluster-ui.service \
     ${sysconfdir}/sigma-racer-wingman/ui.env \
+    ${datadir}/dbus-1/system.d/sigma-racer-cluster-connman.conf \
 "
 
 RDEPENDS:${PN} += " \
