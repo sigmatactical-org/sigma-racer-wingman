@@ -4,10 +4,10 @@
   "channel": "dev",
   "repos": {
     "sigma-racer-wingman": {
-      "ref": "4c1c3bd08f6214afadec76aa446e128a652ec122"
+      "ref": "ecf8569a8e1db15d5c0bfbeee445d4ebb8abf2a8"
     },
     "sigma-instrumentation": {
-      "ref": "3893e6e8931b66a3a4c63f91a981600c4e7ef539"
+      "ref": "e2344b6d49f515b4c15460d1a7a6a24824271ac3"
     },
     "sigma-racer-cluster": {
       "ref": "c35c4a1a4fe47bda69549eea1b85ac7d2f2157ab"
