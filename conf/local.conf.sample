@@ -40,10 +40,11 @@ SSTATE_DIR ?= "${TOPDIR}/../sstate-cache"
 # ACCEPT_FSL_EULA = "1"
 
 #
-# RAUC signing (development — replace for production)
+# RAUC signing (development keys under keys/rauc/, gitignored; CI overrides
+# via RAUC_KEY_FILE/RAUC_CERT_FILE env → local.conf in bitbake-release.sh)
 #
-# RAUC_KEY_FILE = "${TOPDIR}/../keys/rauc/development-key.pem"
-# RAUC_CERT_FILE = "${TOPDIR}/../keys/rauc/development-ca.cert.pem"
+RAUC_KEY_FILE ?= "${TOPDIR}/../keys/rauc/development-key.pem"
+RAUC_CERT_FILE ?= "${TOPDIR}/../keys/rauc/development-cert.pem"
 
 #
 # SDK for Rust cross-development

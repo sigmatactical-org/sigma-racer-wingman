@@ -19,6 +19,7 @@ IMAGE_FEATURES:remove = "hwcodecs"
 IMAGE_INSTALL:append = " psplash"
 
 IMAGE_INSTALL = " \
+    packagegroup-sigma-racer-wingman-ota \
     packagegroup-sigma-racer-wingman-core \
     packagegroup-sigma-racer-wingman-graphics \
     packagegroup-sigma-racer-wingman-vehicle \

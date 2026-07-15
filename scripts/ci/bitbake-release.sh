@@ -56,6 +56,13 @@ fi
 
 bitbake sigma-racer-wingman-image
 
+# Signed A/B update bundle — only when signing material is configured.
+if [[ -n "${RAUC_KEY_FILE:-}" && -n "${RAUC_CERT_FILE:-}" ]]; then
+  bitbake sigma-racer-wingman-bundle
+else
+  echo "RAUC signing material not configured — skipping update bundle" >&2
+fi
+
 if [[ "${BUILD_DIR}" = /* ]]; then
   DEPLOY="${BUILD_DIR}/tmp/deploy/images/${MACHINE}"
 else

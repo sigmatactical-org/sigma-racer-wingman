@@ -83,6 +83,16 @@ jobs:
           chmod +x embedded/sigma-racer-wingman/scripts/ci/publish-product-debs.sh
           embedded/sigma-racer-wingman/scripts/ci/publish-product-debs.sh
 
+      - name: Publish update bundle
+        env:
+          SIGMA_UPDATES_URL: ${{ vars.SIGMA_UPDATES_PUBLISH_URL }}
+          SIGMA_INTERNAL_TOKEN: ${{ secrets.SIGMA_INTERNAL_TOKEN }}
+          SIGMA_UPDATES_CHANNEL: ${{ steps.meta.outputs.channel }}
+        run: |
+          chmod +x embedded/sigma-racer-wingman/scripts/ci/publish-bundle.sh
+          embedded/sigma-racer-wingman/scripts/ci/publish-bundle.sh \
+            embedded/sigma-racer-wingman/dist/release/sigma-racer-wingman-imx8mp
+
       - name: Publish to object store
         if: vars.SIGMA_PUBLISH_ARTIFACTS == 'true'
         env:
