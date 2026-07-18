@@ -15,7 +15,7 @@ SRC_URI += " \
     crate://crates.io/core-foundation-sys/0.8.7 \
     crate://crates.io/cpufeatures/0.3.0 \
     crate://crates.io/crypto-common/0.2.2 \
-    crate://crates.io/dbc-rs/0.9.0 \
+    crate://crates.io/dbc-rs/0.9.1 \
     crate://crates.io/digest/0.11.3 \
     crate://crates.io/either/1.16.0 \
     crate://crates.io/embedded-can/0.4.1 \
@@ -33,7 +33,7 @@ SRC_URI += " \
     crate://crates.io/js-sys/0.3.103 \
     crate://crates.io/libc/0.2.186 \
     crate://crates.io/log/0.4.33 \
-    crate://crates.io/mdf4-rs/0.5.0 \
+    crate://crates.io/mdf4-rs/0.5.1 \
     crate://crates.io/memchr/2.8.3 \
     crate://crates.io/memoffset/0.9.1 \
     crate://crates.io/nb/1.1.0 \
@@ -108,7 +108,7 @@ SRC_URI[const-oid-0.10.2.sha256sum] = "a6ef517f0926dd24a1582492c791b6a4818a4d94e
 SRC_URI[core-foundation-sys-0.8.7.sha256sum] = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 SRC_URI[cpufeatures-0.3.0.sha256sum] = "8b2a41393f66f16b0823bb79094d54ac5fbd34ab292ddafb9a0456ac9f87d201"
 SRC_URI[crypto-common-0.2.2.sha256sum] = "ce6e4c961d6cd6c9a86db418387425e8bdeaf05b3c8bc1411e6dca4c252f1453"
-SRC_URI[dbc-rs-0.9.0.sha256sum] = "84b641a4e20fb86f061f12ec5845e35df2e1a16fcc4437f66decf2388ec8a853"
+SRC_URI[dbc-rs-0.9.1.sha256sum] = "b3d0c4dfd96f9613f8f0faba5c93f56e376e8b64e56d8a4d40cf19f696500a72"
 SRC_URI[digest-0.11.3.sha256sum] = "f1dd6dbb5841937940781866fa1281a1ff7bd3bf827091440879f9994983d5c2"
 SRC_URI[either-1.16.0.sha256sum] = "91622ff5e7162018101f2fea40d6ebf4a78bbe5a49736a2020649edf9693679e"
 SRC_URI[embedded-can-0.4.1.sha256sum] = "e9d2e857f87ac832df68fa498d18ddc679175cf3d2e4aa893988e5601baf9438"
@@ -126,7 +126,7 @@ SRC_URI[itoa-1.0.18.sha256sum] = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c
 SRC_URI[js-sys-0.3.103.sha256sum] = "53b44bfcdb3f8d5837a46dae1ca9660a837176eee74a28b229bc626816589102"
 SRC_URI[libc-0.2.186.sha256sum] = "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
 SRC_URI[log-0.4.33.sha256sum] = "0ceec5bc11778974d1bcb055b18002eba7f4b3518b6a0081b3af5f21666da9ad"
-SRC_URI[mdf4-rs-0.5.0.sha256sum] = "e69aae83a1a8f0249b5eaae17c2229ac62aa7e7eabedcc9cbc1fcd7d56b03006"
+SRC_URI[mdf4-rs-0.5.1.sha256sum] = "ebd21f72ae5d531f44ec7a050e5c5e4aff7a2b29670a275532a0cb0e5f0553ff"
 SRC_URI[memchr-2.8.3.sha256sum] = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 SRC_URI[memoffset-0.9.1.sha256sum] = "488016bfae457b036d996092f6cb448677611ce4449e970ceaf42695203f218a"
 SRC_URI[nb-1.1.0.sha256sum] = "8d5439c4ad607c3c23abf66de8c8bf57ba8adcd1f129e699851a6e43935d339d"
