@@ -57,6 +57,11 @@ Vehicle.Powertrain.CombustionEngine.IsRedline:
   type: sensor
   description: True when engine speed is at or above the configured redline.
 
+Vehicle.Powertrain.CombustionEngine.IsRunning:
+  datatype: boolean
+  type: sensor
+  description: True when the engine is running (ECU EngineRunning flag).
+
 Vehicle.Powertrain.Transmission:
   type: branch
 
@@ -129,6 +134,18 @@ Vehicle.OBD.OilTemperature:
   unit: celsius
   description: Engine oil temperature.
 
+Vehicle.OBD.MAP:
+  datatype: float
+  type: sensor
+  unit: kPa
+  description: Intake manifold absolute pressure.
+
+Vehicle.OBD.IntakeTemp:
+  datatype: int16
+  type: sensor
+  unit: celsius
+  description: Intake air temperature.
+
 Vehicle.OBD.DTCCount:
   datatype: uint8
   type: sensor
@@ -159,6 +176,23 @@ Vehicle.Acceleration.Longitudinal:
   unit: g
   description: Longitudinal acceleration (G-force readout).
 
+Vehicle.CurrentLocation:
+  type: branch
+
+Vehicle.CurrentLocation.Heading:
+  datatype: float
+  type: sensor
+  unit: deg
+  min: 0
+  max: 360
+  description: GNSS-derived heading.
+
+Vehicle.CurrentLocation.Altitude:
+  datatype: int32
+  type: sensor
+  unit: m
+  description: GNSS-derived elevation above sea level.
+
 Vehicle.Chassis:
   type: branch
 
@@ -170,6 +204,14 @@ Vehicle.Chassis.Axle.Row1:
 
 Vehicle.Chassis.Axle.Row1.Wheel:
   type: branch
+
+Vehicle.Chassis.Axle.Row1.Wheel.Speed:
+  datatype: float
+  type: sensor
+  unit: km/h
+  min: 0
+  max: 400
+  description: Front wheel speed from the ABS sensor ring.
 
 Vehicle.Chassis.Axle.Row1.Wheel.Left:
   type: branch
@@ -188,6 +230,14 @@ Vehicle.Chassis.Axle.Row2:
 
 Vehicle.Chassis.Axle.Row2.Wheel:
   type: branch
+
+Vehicle.Chassis.Axle.Row2.Wheel.Speed:
+  datatype: float
+  type: sensor
+  unit: km/h
+  min: 0
+  max: 400
+  description: Rear wheel speed from the ABS sensor ring.
 
 Vehicle.Chassis.Axle.Row2.Wheel.Left:
   type: branch
@@ -276,6 +326,11 @@ Vehicle.ADAS.ABS.IsActive:
   datatype: boolean
   type: actuator
   description: ABS currently modulating.
+
+Vehicle.ADAS.ABS.IsError:
+  datatype: boolean
+  type: sensor
+  description: ABS fault detected (AbsFault flag).
 
 Vehicle.ADAS.TCS:
   type: branch
