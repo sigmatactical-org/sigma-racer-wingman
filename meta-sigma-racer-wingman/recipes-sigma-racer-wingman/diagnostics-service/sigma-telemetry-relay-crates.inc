@@ -20,7 +20,7 @@ SRC_URI += " \
     crate://crates.io/cpufeatures/0.3.0 \
     crate://crates.io/crypto-common/0.2.2 \
     crate://crates.io/data-encoding/2.11.0 \
-    crate://crates.io/dbc-rs/0.9.1 \
+    crate://crates.io/dbc-rs/0.10.0 \
     crate://crates.io/der-parser/10.0.0 \
     crate://crates.io/deranged/0.5.8 \
     crate://crates.io/digest/0.11.3 \
@@ -138,7 +138,7 @@ SRC_URI[core-foundation-sys-0.8.7.sha256sum] = "773648b94d0e5d620f64f28077744574
 SRC_URI[cpufeatures-0.3.0.sha256sum] = "8b2a41393f66f16b0823bb79094d54ac5fbd34ab292ddafb9a0456ac9f87d201"
 SRC_URI[crypto-common-0.2.2.sha256sum] = "ce6e4c961d6cd6c9a86db418387425e8bdeaf05b3c8bc1411e6dca4c252f1453"
 SRC_URI[data-encoding-2.11.0.sha256sum] = "a4ae5f15dda3c708c0ade84bfee31ccab44a3da4f88015ed22f63732abe300c8"
-SRC_URI[dbc-rs-0.9.1.sha256sum] = "b3d0c4dfd96f9613f8f0faba5c93f56e376e8b64e56d8a4d40cf19f696500a72"
+SRC_URI[dbc-rs-0.10.0.sha256sum] = "377234afc4098d58394a3c05d0b60530e42ffea04374961998ec33ea882b1aeb"
 SRC_URI[der-parser-10.0.0.sha256sum] = "07da5016415d5a3c4dd39b11ed26f915f52fc4e0dc197d87908bc916e51bc1a6"
 SRC_URI[deranged-0.5.8.sha256sum] = "7cd812cc2bc1d69d4764bd80df88b4317eaef9e773c75226407d9bc0876b211c"
 SRC_URI[digest-0.11.3.sha256sum] = "f1dd6dbb5841937940781866fa1281a1ff7bd3bf827091440879f9994983d5c2"

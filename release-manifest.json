@@ -4,25 +4,25 @@
   "channel": "dev",
   "repos": {
     "sigma-racer-wingman": {
-      "ref": "5d6c305a1e482ae21e093b39bec4a5968eec38fb"
+      "ref": "96a2abd0ba662b0e0cf9a3e4a09a46f5866aa776"
     },
     "sigma-instrumentation": {
       "ref": "e97b36c75bdee5ade1a978c8d5449ea36ff8ae6c"
     },
     "sigma-racer-cluster": {
-      "ref": "406f466e775813e852de6ef53e136d3bb1cc71dd"
+      "ref": "56603151918bd0c041c9f917a3c52e5887e86c41"
     },
     "sigma-racer-sidearm": {
       "ref": "716234df6854d6c02af53f9bac00f0c5c9f25033"
     },
     "vss-map": {
-      "ref": "6e495a09c3b3afc1258cdb95bf097852831514ef"
+      "ref": "1d326e275852341f492afad0df44453ba5d56ba1"
     },
     "sigma-racer-telemetry": {
-      "ref": "864e4d7b5d6843c1bd959c4790990633e1aebafa"
+      "ref": "bc172e6815f16f1c2c429fb727ffd900b1db4e29"
     },
     "sigma-racer-vehicle": {
-      "ref": "47e2c6afef98e0cf4dec374bedd1ed3c65826cfc"
+      "ref": "c1557ce617309cda5040bd1282b1cf8f466dcd1d"
     }
   },
   "yocto_layers": {

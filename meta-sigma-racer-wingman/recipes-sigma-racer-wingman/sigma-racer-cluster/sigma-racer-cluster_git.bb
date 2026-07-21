@@ -30,7 +30,7 @@ require ${THISDIR}/sigma-racer-cluster-crates.inc
 
 UI_ENV = "${@bb.utils.contains('MACHINE', 'sigma-racer-wingman-qemu', 'sigma-racer-wingman-ui-qemu.env', 'sigma-racer-wingman-ui.env', d)}"
 
-SRCREV = "6054f5cee0383570b4f3da23f236becd0ca152ce"
+SRCREV = "56603151918bd0c041c9f917a3c52e5887e86c41"
 
 S = "${WORKDIR}/git"
 
