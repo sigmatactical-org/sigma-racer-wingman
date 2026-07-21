@@ -152,10 +152,10 @@ _sigma_apply_external_src_paths() {
     local entry var repo
     local vars=(
         SIGMA_INSTRUMENTATION_SRC:sigma-instrumentation
-        SIGMA_RACER_CLUSTER_SRC:sigma-racer-cluster
-        SIGMA_RACER_VEHICLE_SRC:sigma-racer-vehicle
-        SIGMA_RACER_TELEMETRY_SRC:sigma-racer-telemetry
-        SIGMA_RACER_SIDEARM_SRC:sigma-racer-sidearm
+        SIGMA_RACER_CLUSTER_SRC:sigma-racer/cluster
+        SIGMA_RACER_VEHICLE_SRC:sigma-racer/vehicle
+        SIGMA_RACER_TELEMETRY_SRC:sigma-racer/telemetry
+        SIGMA_RACER_SIDEARM_SRC:sigma-racer/sidearm
     )
     for entry in "${vars[@]}"; do
         var="${entry%%:*}"
