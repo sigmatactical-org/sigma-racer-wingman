@@ -8,6 +8,10 @@ LIC_FILES_CHKSUM = " \
 
 inherit cargo cargo-update-recipe-crates systemd externalsrc
 
+# The workspace release profile sets strip=true (needed by the firmware crates),
+# so cargo delivers an already-stripped host binary; let Yocto package it as-is.
+INSANE_SKIP:${PN} += "already-stripped"
+
 EXTERNALSRC = "${SIGMA_RACER_TELEMETRY_SRC}"
 
 require ${THISDIR}/../sigma-cargo-sibling-patches.inc

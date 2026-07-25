@@ -8,6 +8,10 @@ LIC_FILES_CHKSUM = " \
 
 inherit cargo cargo-update-recipe-crates systemd externalsrc
 
+# The workspace release profile sets strip=true (needed by the firmware crates),
+# so cargo delivers an already-stripped host binary; let Yocto package it as-is.
+INSANE_SKIP:${PN} += "already-stripped"
+
 EXTERNALSRC = "${SIGMA_RACER_VEHICLE_SRC}"
 
 # telemetry (and its sidearm dep) are pinned as git deps but are checked out
